@@ -6,95 +6,63 @@
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 12:53:19 by ndremora          #+#    #+#             */
-/*   Updated: 2019/01/14 13:06:07 by ndremora         ###   ########.fr       */
+/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		counter(char const *s, char c)
+int		counter(char const *s, char c)
 {
-	int		count;
+	int count;
 
 	count = 0;
-	while (*s != '\0')
+	while (*s)
 	{
 		while (*s == c)
 			s++;
-		if (*s != '\0')
+		if (*s)
+		{
 			count++;
-		while (*s != '\0' && *s != c)
-			s++;
+			while (*s && *s != c)
+				s++;
+		}
 	}
 	return (count);
 }
 
-static int		position(const char *s, int j, char c)
-{
-	int		i;
-
-	i = 0;
-	while (s[j + i] != '\0')
-	{
-		if (s[j + i] == c)
-			return (j + i);
-		i++;
-	}
-	return (j + i);
-}
-
-static char		*whole_word(char const *s, int j, char c)
-{
-	int		i;
-	int		end;
-	char	*word;
-
-	i = 0;
-	end = position(s, j, c);
-	if (!(word = ft_memalloc(end - j + 1u)))
-		return (NULL);
-	while (s[i] != '\0' && end > j)
-	{
-		word[i] = s[j];
-		j++;
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-static char		*freemem(char **array, int i)
-{
-	while (--i > 0)
-		free(array[i]);
-	free(array);
-	return (NULL);
-}
-
-char			**ft_strsplit(char const *s, char c)
+char	**make_array(const char *s, char c, int words_count)
 {
 	char	**array;
+	char	*word;
 	int		i;
-	int		j;
-	size_t	len;
-	int		h;
 
 	i = 0;
-	j = 0;
-	if (!s || !(array = ft_memalloc(counter(s, c) + 1u)))
-		return (NULL);
-	h = counter(s, c);
-	while (h > i)
+	if ((array = (char **)malloc(sizeof(char *) * (words_count + 1))))
 	{
-		while (s[j] != '\0' && s[j] == c)
-			j++;
-		len = ft_strlen(whole_word(s, j, c));
-		if (!(array[i] = ft_memalloc(len)))
-			freemem(*&array, i);
-		array[i] = whole_word(s, j, c);
-		j = position(s, j, c);
-		i++;
+		while (i < words_count)
+		{
+			while (*s == c)
+				s++;
+			if (*s)
+			{
+				if (!(word = ft_cut_word(s, c)))
+				{
+					ft_free_array(array);
+					return (NULL);
+				}
+				array[i++] = word;
+				s += (ft_strlen(word) + 1);
+			}
+		}
+		array[i] = NULL;
 	}
-	array[i] = 0;
 	return (array);
+}
+
+char	**ft_strsplit(char const *s, char c)
+{
+	if (!s)
+		return (NULL);
+	return (make_array(s, c, counter(s, c)));
 }

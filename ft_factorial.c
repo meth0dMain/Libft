@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/04/01 12:15:47 by ndremora          #+#    #+#             */
+/*   Updated: 2019/04/09 17:59:34 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+int		ft_factorial(int n)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	if (n >= 2)
+		return (n * ft_factorial(n - 1));
+	else
+		return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 18:29:13 by ndremora          #+#    #+#             */
-/*   Updated: 2018/12/14 13:24:05 by ndremora         ###   ########.fr       */
+/*   Updated: 2019/03/20 11:42:10 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar(char c)
 {
-	write(1, &c, sizeof(c));
+	write(1, &c, 1);
 }

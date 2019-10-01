@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_cut_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/03/19 12:51:06 by ndremora          #+#    #+#             */
+/*   Updated: 2019/03/19 12:52:19 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+char		*ft_cut_word(const char *str, char c)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	char	*tmp;
+	size_t	i;
+
+	tmp = (char *)str;
+	i = 0;
+	while (*tmp && *tmp != c)
+	{
+		tmp++;
+		i++;
+	}
+	return (ft_strduplen(str, i));
 }

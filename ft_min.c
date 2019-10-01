@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/03/15 10:59:13 by ndremora          #+#    #+#             */
+/*   Updated: 2019/03/15 10:59:51 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+int		ft_min(int a, int b)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	return ((a < b) ? a : b);
 }

@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/03/15 10:07:00 by ndremora          #+#    #+#             */
+/*   Updated: 2019/03/15 10:07:19 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+int		ft_abs(int num)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	return ((num < 0) ? -num : num);
 }

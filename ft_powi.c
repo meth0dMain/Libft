@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_powi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/04/03 14:33:08 by ndremora          #+#    #+#             */
+/*   Updated: 2019/04/16 12:54:13 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+int		ft_powi(int num, int pow)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	int	out;
+
+	out = num;
+	if (pow == 0)
+		return (1);
+	while (--pow)
+		out *= num;
+	return (out);
 }

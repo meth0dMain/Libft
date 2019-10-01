@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strduplen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndremora <ndremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 18:29:49 by ndremora          #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:54 by ndremora         ###   ########.fr       */
+/*   Created: 2019/03/19 12:26:59 by ndremora          #+#    #+#             */
+/*   Updated: 2019/03/19 12:27:42 by ndremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+char	*ft_strduplen(const char *str, size_t len)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	char			*str2;
+
+	if (!(str2 = ft_strnew(len)))
+		return (NULL);
+	return (ft_strncpy(str2, str, len));
 }
